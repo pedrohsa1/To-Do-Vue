@@ -3,7 +3,10 @@
     
     <h1>{{titulo}}</h1>
     
-    <input type="text" placeholder="Nome da Tarefa" v-model="nome"/>
+    <input type="text" 
+           placeholder="Nome da Tarefa" 
+           v-model="nome"
+           v-on:keyup.enter="addTarefa()"/>
     
     <table border="1px">
       <thead>
@@ -12,9 +15,10 @@
         <th></th>
       </thead>
       <tbody>
-        <tr>
-            <td>1</td>
-            <td>Alex </td>
+        <tr v-for="(tarefa, index) in tarefas" :key="index">
+            <td>{{index + 1}}</td>
+            <!--<td>{{tarefa.id}}</td>-->
+            <td>{{tarefa.nome}}</td>
             <td>
               <button class="btn" @click="remover()">Remover</button>
             </td>
@@ -31,10 +35,26 @@ export default {
     return {
       titulo: "Tarefas TO-DO",
       nome: "Tarefa",
+      tarefas: [
+        {id: 1, nome: "Pedro"},
+        {id: 2, nome: "Henrique"},
+        {id: 3, nome: "Souza"},
+      ]
     }
   },
   props: {
-  }
+  },
+  methods: {
+    addTarefa() {
+      let _tarefa = {
+        nome: this.nome
+      };
+      this.tarefas.push(_tarefa);
+      this.tarefas.forEach(tarefa => {
+        console.log(tarefa);
+      });
+    }
+  },
 }
 </script>
 
