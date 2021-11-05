@@ -6,7 +6,8 @@
     <input type="text" 
            placeholder="Nome da Tarefa" 
            v-model="nome"
-           v-on:keyup.enter="addTarefa()"/>
+           @keyup.enter="addTarefa()"/>
+    <button class="btn btnInput" @click="addTarefa()">Adicionar</button>
     
     <table>
       <thead>
@@ -33,7 +34,7 @@
 export default {
   data(){
     return {
-      titulo: "Tarefas TODO",
+      titulo: "TODO",
       nome: "Tarefa",
       tarefas: [
         {id: 1, nome: "Tarefa 1"},
@@ -64,5 +65,28 @@ export default {
 </script>
 
 <style scoped>
+  input {
+    width: calc(100%-150px);
+    border:0;
+    padding: 20px;
+    background-color: rgb(206, 239, 250);
+    font-size: 1.3em;
+    color: #687f7f;
+    /*display: inline; Se fizer o display inline, não precisa fazer o calculo para o botão e o campo ficarem juntos*/
+  }
 
+  .btnInput{
+    width: 150px;
+    border:0px;
+    padding: 20px;
+    font-size: 1.3em;
+    background-color: rgba(20, 84, 221, 0.822);
+    display: inline;
+  }
+
+  .btnInput:hover{
+    padding: 20px;
+    margin: 0;
+    border:0px;
+  }
 </style>
