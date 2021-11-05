@@ -20,7 +20,7 @@
             <!--<td>{{tarefa.id}}</td>-->
             <td>{{tarefa.nome}}</td>
             <td>
-              <button class="btn" @click="remover()">Remover</button>
+              <button class="btn" @click="remover(tarefa)">Remover</button>
             </td>
         </tr>
       </tbody>
@@ -46,19 +46,23 @@ export default {
   },
   methods: {
     addTarefa() {
+
       let _tarefa = {
         nome: this.nome
       };
+
       this.tarefas.push(_tarefa);
-      this.tarefas.forEach(tarefa => {
-        console.log(tarefa);
-      });
+
+      this.nome = "";
+    },
+    remover(tarefa){
+      let indice = this.tarefas.indexOf(tarefa)
+      this.tarefas.splice(indice, 1);
     }
-  },
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>
