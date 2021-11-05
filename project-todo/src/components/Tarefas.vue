@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     
     <h1>{{titulo}}</h1>
     
@@ -8,19 +8,19 @@
            v-model="nome"
            v-on:keyup.enter="addTarefa()"/>
     
-    <table border="1px">
+    <table>
       <thead>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Cod.</th>
+        <th>Tarefa</th>
+        <th>Opções</th>
       </thead>
       <tbody>
         <tr v-for="(tarefa, index) in tarefas" :key="index">
-            <td>{{index + 1}}</td>
+            <td><strong>{{index + 1}}</strong></td>
             <!--<td>{{tarefa.id}}</td>-->
             <td>{{tarefa.nome}}</td>
             <td>
-              <button class="btn" @click="remover(tarefa)">Remover</button>
+              <button class="btn btn_danger" @click="remover(tarefa)">Remover</button>
             </td>
         </tr>
       </tbody>
@@ -33,12 +33,12 @@
 export default {
   data(){
     return {
-      titulo: "Tarefas TO-DO",
+      titulo: "Tarefas TODO",
       nome: "Tarefa",
       tarefas: [
-        {id: 1, nome: "Pedro"},
-        {id: 2, nome: "Henrique"},
-        {id: 3, nome: "Souza"},
+        {id: 1, nome: "Tarefa 1"},
+        {id: 2, nome: "Tarefa 2"},
+        {id: 3, nome: "Tarefa 3"},
       ]
     }
   },
