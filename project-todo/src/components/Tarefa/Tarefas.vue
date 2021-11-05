@@ -1,13 +1,16 @@
 <template>
   <div class="card">
-    
-    <h1>{{titulo}}</h1>
-    
-    <input type="text" 
-           placeholder="Nome da Tarefa" 
-           v-model="nome"
-           @keyup.enter="addTarefa()"/>
-    <button class="btn btnInput" @click="addTarefa()">Adicionar</button>
+
+    <titulo texto="Tarefas"/>
+
+    <div style="margin-top:50px; margin-bottom:50px;">
+      <input type="text" 
+            placeholder="Nome da Tarefa" 
+            v-model="nome"
+            @keyup.enter="addTarefa()"/>
+      <button class="btn btnInput" @click="addTarefa()">Adicionar</button>
+    </div>
+
     
     <table>
       <thead>
@@ -15,7 +18,7 @@
         <th>Tarefa</th>
         <th>Opções</th>
       </thead>
-      <tbody>
+      <tbody v-if="tarefas.length">
         <tr v-for="(tarefa, index) in tarefas" :key="index">
             <td><strong>{{index + 1}}</strong></td>
             <!--<td>{{tarefa.id}}</td>-->
@@ -25,21 +28,27 @@
             </td>
         </tr>
       </tbody>
+      <tfoot style="text-align: center;" v-else>
+        Nenhuma tarefa cadastrada.
+      </tfoot>
     </table>
 
   </div>
 </template>
 
 <script>
+import Titulo from '../_share/Titulo.vue'
+
 export default {
+  components:{
+    Titulo
+  },
   data(){
     return {
-      titulo: "TODO",
-      nome: "Tarefa",
+      titulo: "",
+      nome: "",
       tarefas: [
-        {id: 1, nome: "Tarefa 1"},
-        {id: 2, nome: "Tarefa 2"},
-        {id: 3, nome: "Tarefa 3"},
+        {id: 1, nome: "Escovar os dentes."},
       ]
     }
   },

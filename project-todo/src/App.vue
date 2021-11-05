@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Tarefas from './components/Tarefas.vue'
+import Tarefas from './components/Tarefa/Tarefas.vue'
 
 export default {
   name: 'App',
